@@ -2,8 +2,8 @@
 Contributors: catchsquare, ashokmhrj, subedimadhu
 Tags: wp social widget, social media, social links,social network, social icons, social media icons, social, media, widget, icons, Behance, Dribbble, Email, Facebook, Flickr, FourSquare, GitHub, Google+, Instagram, LinkedIn, Pinterest, RSS, StumbleUpon,Tumblr, Twitter, Vimeo, Vine, WordPress, Yelp, YouTube, Behance icon, Dribbble icon, Email icon, Facebook icon, Flickr icon, FourSquare icon, GitHub icon, Google+ icon, Instagram icon, LinkedIn icon, Pinterest icon, RSS icon, StumbleUpon icon,Tumblr icon, Twitter icon, Vimeo icon, Vine icon, WordPress icon, Yelp icon, YouTube icon
 Requires at least: 2.8
-Tested up to: 6.4
-Stable tag: 2.2.6
+Tested up to: 6.7
+Stable tag: 2.3
 Donate link:https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=contact%40catchsquare%2ecom&lc=US&item_name=WP%20Social%20Widget&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -97,6 +97,17 @@ Please use support forum or you can directly mail us at
 3. 3 **WP Social Widget screenshot**
 
 == Changelog ==
+= 2.3 =
+Added nonce in widget form
+
+= 2.2.8 =
+escaping attr
+
+= 2.2.7 =
+change version
+escaping attr in mail
+
+
 = 2.2.6 =
 change version
 escaping attr in mail

@@ -427,14 +427,21 @@ class Social_Networking_Links extends WP_Widget
 			</div>
 
 		</div>
+
 <?php
+		// Output a nonce
+		wp_nonce_field( 'wp_social_widget_settings_action', 'wp_social_widget_nonce' );
 	}
 
 	function update($new_instance, $old_instance)
 	{
-		// print_r( $new_instance );die;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['target'] = strip_tags($new_instance['target']);
+		if ( ! isset( $_POST['wp_social_widget_nonce'] ) || 
+		! wp_verify_nonce( $_POST['wp_social_widget_nonce'], 'wp_social_widget_settings_action' ) ) {
+			// Nonce check failed. Maybe just return old instance to prevent saving.
+			return $old_instance;
+   		}
+		$instance['title'] = sanitize_text_field($new_instance['title']);
+		$instance['target'] = sanitize_text_field($new_instance['target']);
 
 		$instance['background_color'] = $new_instance['background_color'];
 		$instance['background_hover_color'] = $new_instance['background_hover_color'];
@@ -443,74 +450,74 @@ class Social_Networking_Links extends WP_Widget
 		$instance['icon_circle'] = $new_instance['icon_circle'];
 
 
-		$instance['mail'] = strip_tags($new_instance['mail']);
-		$instance['show_hide_mail'] = strip_tags($new_instance['show_hide_mail']);
+		$instance['mail'] = sanitize_text_field($new_instance['mail']);
+		$instance['show_hide_mail'] = sanitize_text_field($new_instance['show_hide_mail']);
 
-		$instance['rss'] = strip_tags($new_instance['rss']);
-		$instance['show_hide_rss'] = strip_tags($new_instance['show_hide_rss']);
+		$instance['rss'] = sanitize_text_field($new_instance['rss']);
+		$instance['show_hide_rss'] = sanitize_text_field($new_instance['show_hide_rss']);
 
-		$instance['behance'] = strip_tags($new_instance['behance']);
-		$instance['show_hide_behance'] = strip_tags($new_instance['show_hide_behance']);
+		$instance['behance'] = sanitize_text_field($new_instance['behance']);
+		$instance['show_hide_behance'] = sanitize_text_field($new_instance['show_hide_behance']);
 
-		$instance['foursquare'] = strip_tags($new_instance['foursquare']);
-		$instance['show_hide_foursquare'] = strip_tags($new_instance['show_hide_foursquare']);
+		$instance['foursquare'] = sanitize_text_field($new_instance['foursquare']);
+		$instance['show_hide_foursquare'] = sanitize_text_field($new_instance['show_hide_foursquare']);
 
-		$instance['skype'] = strip_tags($new_instance['skype']);
-		$instance['show_hide_skype'] = strip_tags($new_instance['show_hide_skype']);
+		$instance['skype'] = sanitize_text_field($new_instance['skype']);
+		$instance['show_hide_skype'] = sanitize_text_field($new_instance['show_hide_skype']);
 
-		$instance['soundcloud'] = strip_tags($new_instance['soundcloud']);
-		$instance['show_hide_soundcloud'] = strip_tags($new_instance['show_hide_soundcloud']);
+		$instance['soundcloud'] = sanitize_text_field($new_instance['soundcloud']);
+		$instance['show_hide_soundcloud'] = sanitize_text_field($new_instance['show_hide_soundcloud']);
 
-		$instance['vine'] = strip_tags($new_instance['vine']);
-		$instance['show_hide_vine'] = strip_tags($new_instance['show_hide_vine']);
+		$instance['vine'] = sanitize_text_field($new_instance['vine']);
+		$instance['show_hide_vine'] = sanitize_text_field($new_instance['show_hide_vine']);
 
-		$instance['vk'] = strip_tags($new_instance['vk']);
-		$instance['show_hide_vk'] = strip_tags($new_instance['show_hide_vk']);
+		$instance['vk'] = sanitize_text_field($new_instance['vk']);
+		$instance['show_hide_vk'] = sanitize_text_field($new_instance['show_hide_vk']);
 
-		$instance['xing'] = strip_tags($new_instance['xing']);
-		$instance['show_hide_xing'] = strip_tags($new_instance['show_hide_xing']);
+		$instance['xing'] = sanitize_text_field($new_instance['xing']);
+		$instance['show_hide_xing'] = sanitize_text_field($new_instance['show_hide_xing']);
 
-		$instance['yelp'] = strip_tags($new_instance['yelp']);
-		$instance['show_hide_yelp'] = strip_tags($new_instance['show_hide_yelp']);
+		$instance['yelp'] = sanitize_text_field($new_instance['yelp']);
+		$instance['show_hide_yelp'] = sanitize_text_field($new_instance['show_hide_yelp']);
 
-		$instance['dribbble'] = strip_tags($new_instance['dribbble']);
-		$instance['show_hide_dribbble'] = strip_tags($new_instance['show_hide_dribbble']);
+		$instance['dribbble'] = sanitize_text_field($new_instance['dribbble']);
+		$instance['show_hide_dribbble'] = sanitize_text_field($new_instance['show_hide_dribbble']);
 
-		$instance['facebook'] = strip_tags($new_instance['facebook']);
-		$instance['show_hide_facebook'] = strip_tags($new_instance['show_hide_facebook']);
+		$instance['facebook'] = sanitize_text_field($new_instance['facebook']);
+		$instance['show_hide_facebook'] = sanitize_text_field($new_instance['show_hide_facebook']);
 
-		$instance['flickr'] = strip_tags($new_instance['flickr']);
-		$instance['show_hide_flickr'] = strip_tags($new_instance['show_hide_flickr']);
+		$instance['flickr'] = sanitize_text_field($new_instance['flickr']);
+		$instance['show_hide_flickr'] = sanitize_text_field($new_instance['show_hide_flickr']);
 
-		$instance['github'] = strip_tags($new_instance['github']);
-		$instance['show_hide_github'] = strip_tags($new_instance['show_hide_github']);
+		$instance['github'] = sanitize_text_field($new_instance['github']);
+		$instance['show_hide_github'] = sanitize_text_field($new_instance['show_hide_github']);
 
-		$instance['google'] = strip_tags($new_instance['google']);
-		$instance['show_hide_google'] = strip_tags($new_instance['show_hide_google']);
+		$instance['google'] = sanitize_text_field($new_instance['google']);
+		$instance['show_hide_google'] = sanitize_text_field($new_instance['show_hide_google']);
 
-		$instance['instagram'] = strip_tags($new_instance['instagram']);
-		$instance['show_hide_instagram'] = strip_tags($new_instance['show_hide_instagram']);
+		$instance['instagram'] = sanitize_text_field($new_instance['instagram']);
+		$instance['show_hide_instagram'] = sanitize_text_field($new_instance['show_hide_instagram']);
 
-		$instance['linkedin'] = strip_tags($new_instance['linkedin']);
-		$instance['show_hide_linkedin'] = strip_tags($new_instance['show_hide_linkedin']);
+		$instance['linkedin'] = sanitize_text_field($new_instance['linkedin']);
+		$instance['show_hide_linkedin'] = sanitize_text_field($new_instance['show_hide_linkedin']);
 
-		$instance['pinterest'] = strip_tags($new_instance['pinterest']);
-		$instance['show_hide_pinterest'] = strip_tags($new_instance['show_hide_pinterest']);
+		$instance['pinterest'] = sanitize_text_field($new_instance['pinterest']);
+		$instance['show_hide_pinterest'] = sanitize_text_field($new_instance['show_hide_pinterest']);
 
-		$instance['stumbleupon'] = strip_tags($new_instance['stumbleupon']);
-		$instance['show_hide_stumbleupon'] = strip_tags($new_instance['show_hide_stumbleupon']);
+		$instance['stumbleupon'] = sanitize_text_field($new_instance['stumbleupon']);
+		$instance['show_hide_stumbleupon'] = sanitize_text_field($new_instance['show_hide_stumbleupon']);
 
-		$instance['tumblr'] = strip_tags($new_instance['tumblr']);
-		$instance['show_hide_tumblr'] = strip_tags($new_instance['show_hide_tumblr']);
+		$instance['tumblr'] = sanitize_text_field($new_instance['tumblr']);
+		$instance['show_hide_tumblr'] = sanitize_text_field($new_instance['show_hide_tumblr']);
 
-		$instance['twitter'] = strip_tags($new_instance['twitter']);
-		$instance['show_hide_twitter'] = strip_tags($new_instance['show_hide_twitter']);
+		$instance['twitter'] = sanitize_text_field($new_instance['twitter']);
+		$instance['show_hide_twitter'] = sanitize_text_field($new_instance['show_hide_twitter']);
 
-		$instance['vimeo'] = strip_tags($new_instance['vimeo']);
-		$instance['show_hide_vimeo'] = strip_tags($new_instance['show_hide_vimeo']);
+		$instance['vimeo'] = sanitize_text_field($new_instance['vimeo']);
+		$instance['show_hide_vimeo'] = sanitize_text_field($new_instance['show_hide_vimeo']);
 
-		$instance['youtube'] = strip_tags($new_instance['youtube']);
-		$instance['show_hide_youtube'] = strip_tags($new_instance['show_hide_youtube']);
+		$instance['youtube'] = sanitize_text_field($new_instance['youtube']);
+		$instance['show_hide_youtube'] = sanitize_text_field($new_instance['show_hide_youtube']);
 		return $instance;
 	}
 
@@ -554,77 +561,80 @@ class Social_Networking_Links extends WP_Widget
 		$socialBlock = $style;
 		$socialBlock .= $before_widget;
 		if (isset($instance['title']) && $instance['title'] != "")
-			$socialBlock .= $before_title . $instance['title'] . $after_title;
-		$socialBlock .= "<ul class='wpsw-social-links'>";
+			$sanitizedTitle = htmlspecialchars($atts['title'], ENT_QUOTES, 'UTF-8');
+			$sanitizedTitle = esc_attr($sanitizedTitle);
+
+			$socialBlock .= $before_title . $sanitizedTitle . $after_title;
+			$socialBlock .= "<ul class='wpsw-social-links'>";
 
 		if ((isset($instance['behance']) && $instance['behance'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['behance'] ) . '" target="' . $target . '" aria-label="Behance" ><span class="social-icon sicon-behance"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['behance'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Behance" ><span class="social-icon sicon-behance"></span></a></li>';
 
 		if ((isset($instance['dribbble']) && $instance['dribbble'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['dribbble'] ) . '" target="' . $target . '" aria-label="Dribble" ><span class="social-icon sicon-dribbble"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['dribbble'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Dribble" ><span class="social-icon sicon-dribbble"></span></a></li>';
 
 		if ((isset($instance['facebook']) && $instance['facebook'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['facebook'] ) . '" target="' . $target . '" aria-label="Facebook" ><span class="social-icon sicon-facebook"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['facebook'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Facebook" ><span class="social-icon sicon-facebook"></span></a></li>';
 
 		if ((isset($instance['flickr']) && $instance['flickr'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['flickr'] ) . '" target="' . $target . '" aria-label="Flicker" ><span class="social-icon sicon-flickr"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['flickr'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Flicker" ><span class="social-icon sicon-flickr"></span></a></li>';
 
 		if ((isset($instance['foursquare']) && $instance['foursquare'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['foursquare'] ) . '" target="' . $target . '" aria-label="Foursquare" ><span class="social-icon sicon-foursquare"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['foursquare'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Foursquare" ><span class="social-icon sicon-foursquare"></span></a></li>';
 
 		if ((isset($instance['github']) && $instance['github'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['github'] ) . '" target="' . $target . '" aria-label="Github" ><span class="social-icon sicon-github"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['github'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Github" ><span class="social-icon sicon-github"></span></a></li>';
 
 		if ((isset($instance['google']) && $instance['google'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['google'] ) . '" target="' . $target . '" aria-label="Google" ><span class="social-icon sicon-google"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['google'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Google" ><span class="social-icon sicon-google"></span></a></li>';
 
 		if ((isset($instance['instagram']) && $instance['instagram'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['instagram'] ) . '" target="' . $target . '" aria-label="Instagram" ><span class="social-icon sicon-instagram"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['instagram'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Instagram" ><span class="social-icon sicon-instagram"></span></a></li>';
 
 		if ((isset($instance['linkedin']) && $instance['linkedin'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['linkedin'] ) . '" target="' . $target . '" aria-label="Linkedin" ><span class="social-icon sicon-linkedin"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['linkedin'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Linkedin" ><span class="social-icon sicon-linkedin"></span></a></li>';
 
 		if ((isset($instance['mail']) && $instance['mail'] != ""))
-			$socialBlock .= '<li><a href="mailto:' . esc_attr($instance['mail']) . '" aria-label="Email" ><span class="social-icon sicon-mail"></span></a></li>';
+			$socialBlock .= '<li><a href="mailto:' . esc_attr($instance['mail']) . '" rel="noopener noreferrer" aria-label="Email" ><span class="social-icon sicon-mail"></span></a></li>';
 
 		if ((isset($instance['pinterest']) && $instance['pinterest'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['pinterest'] ) . '" target="' . $target . '" aria-label="Pinterest" ><span class="social-icon sicon-pinterest"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['pinterest'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Pinterest" ><span class="social-icon sicon-pinterest"></span></a></li>';
 
 		if ((isset($instance['rss']) && $instance['rss'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['rss'] ) . '" target="' . $target . '" aria-label="RSS" ><span class="social-icon sicon-rss"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['rss'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="RSS" ><span class="social-icon sicon-rss"></span></a></li>';
 
 		if ((isset($instance['skype']) && $instance['skype'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['skype'] ) . '" target="' . $target . '" aria-label="Skype" ><span class="social-icon sicon-skype"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['skype'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Skype" ><span class="social-icon sicon-skype"></span></a></li>';
 
 		if ((isset($instance['soundcloud']) && $instance['soundcloud'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['soundcloud'] ) . '" target="' . $target . '" aria-label="soundcloud" ><span class="social-icon sicon-soundcloud"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['soundcloud'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="soundcloud" ><span class="social-icon sicon-soundcloud"></span></a></li>';
 
 		if ((isset($instance['stumbleupon']) && $instance['stumbleupon'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['stumbleupon'] ) . '" target="' . $target . '" aria-label="Stumbleupon" ><span class="social-icon sicon-stumbleupon"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['stumbleupon'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Stumbleupon" ><span class="social-icon sicon-stumbleupon"></span></a></li>';
 
 		if ((isset($instance['tumblr']) && $instance['tumblr'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['tumblr'] ) . '" target="' . $target . '" aria-label="Tumblr" ><span class="social-icon sicon-tumblr"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['tumblr'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Tumblr" ><span class="social-icon sicon-tumblr"></span></a></li>';
 
 		if ((isset($instance['twitter']) && $instance['twitter'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['twitter'] ) . '" target="' . $target . '" aria-label="Twitter" ><span class="social-icon sicon-twitter"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['twitter'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Twitter" ><span class="social-icon sicon-twitter"></span></a></li>';
 
 		if ((isset($instance['vimeo']) && $instance['vimeo'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['vimeo'] ) . '" target="' . $target . '" aria-label="Vimeo" ><span class="social-icon sicon-vimeo"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['vimeo'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Vimeo" ><span class="social-icon sicon-vimeo"></span></a></li>';
 
 		if ((isset($instance['vine']) && $instance['vine'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['vine'] ) . '" target="' . $target . '" aria-label="Vine" ><span class="social-icon sicon-vine"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['vine'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Vine" ><span class="social-icon sicon-vine"></span></a></li>';
 
 		if ((isset($instance['vk']) && $instance['vk'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['vk'] ) . '" target="' . $target . '" aria-label="VK" ><span class="social-icon sicon-vk"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['vk'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="VK" ><span class="social-icon sicon-vk"></span></a></li>';
 
 		if ((isset($instance['xing']) && $instance['xing'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['xing'] ) . '" target="' . $target . '" aria-label="Xing" ><span class="social-icon sicon-xing"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['xing'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Xing" ><span class="social-icon sicon-xing"></span></a></li>';
 
 		if ((isset($instance['yelp']) && $instance['yelp'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['yelp'] ) . '" target="' . $target . '" aria-label="Yelp" ><span class="social-icon sicon-yelp"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['yelp'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Yelp" ><span class="social-icon sicon-yelp"></span></a></li>';
 
 		if ((isset($instance['youtube']) && $instance['youtube'] != ""))
-			$socialBlock .= '<li><a href="' . esc_url( $instance['youtube'] ) . '" target="' . $target . '" aria-label="Youtube" ><span class="social-icon sicon-youtube"></span></a></li>';
+			$socialBlock .= '<li><a href="' . esc_url( $instance['youtube'] ) . '" target="' . $target . '" rel="noopener noreferrer" aria-label="Youtube" ><span class="social-icon sicon-youtube"></span></a></li>';
 
 		$socialBlock .= "</ul>";
 
