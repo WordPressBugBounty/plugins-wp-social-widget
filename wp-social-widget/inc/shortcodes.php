@@ -46,13 +46,13 @@ function wpsw_shortcode( $atts ) {
 		$style .= "<style type='text/css'>
 			body .wpsw-social-links-shortcode li a .social-icon {
 				background: ".$atts['background_color'] ." !important;
-				color:".$atts['icon_color']." !important;
+				color:".esc_attr($atts['icon_color'])." !important;
 			}
 
 			body .wpsw-social-links-shortcode li a .social-icon:hover,
 			body .wpsw-social-links-shortcode li a .social-icon:focus {
 				background: ".$atts['background_hover_color'] ." !important;
-				color:".$atts['icon_hover_color']." !important;
+				color:".esc_attr($atts['icon_hover_color'])." !important;
 
 			}";
 		if( "yes" == $atts['icon_circle'] ) {

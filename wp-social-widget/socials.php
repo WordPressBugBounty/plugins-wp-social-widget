@@ -3,7 +3,7 @@
 Plugin Name: WP Social Widget
 Plugin URI: https://wordpress.org/plugins/wp-social-widget/
 Description: A wordpress plugin to share links of social networking sites.
-Version: 2.3
+Version: 2.3.1
 Author: catchsquare
 Author URI: http://catchsquare.com
 License: GPLv2 or later
@@ -22,7 +22,7 @@ prefix : wpsw_
  */
 
 /*Define Constants for this plugin*/
-define( 'SOCIAL_NETWORK_VERSION', '2.3' );
+define( 'SOCIAL_NETWORK_VERSION', '2.3.1' );
 define( 'SOCIAL_NETWORK_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SOCIAL_NETWORK_URL', plugin_dir_url( __FILE__ ) );
 
